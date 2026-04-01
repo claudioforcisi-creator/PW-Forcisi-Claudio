@@ -1,143 +1,216 @@
-/* ============================================
+/* ==============================================
    DONNAFUGATA - SOSTENIBILITA
-   style.css
-   ============================================ */
+   style.css - FORCISI CLAUDIO - MAT.0312302209 
+   ============================================== */
 
-:root {
-  --font-heading: "Playfair Display", serif;
-  --font-body: "Source Sans 3", system-ui, -apple-system, sans-serif;
-  --color-bg: #f5f2ec;
-  --color-bg-light: #ffffff;
-  --color-primary: #4a164b;
-  --color-secondary: #c38c5a;
-  --color-text: #2a1f2e;
-  --color-muted: #6b5e5a;
-  --color-border: #e0d4c7;
-  --color-bg-card: #fdf9f2;
-  --color-bg-highlight: #faf5ec;
-  --color-sdg-bg: #f2e8f5;
-  --color-metric-bg: #f8f2f7;
-  --color-timeline-bg: #fdf7f0;
+:root {                                                                   /* Raccoglie le variabili CSS globali del progetto */
+  --font-heading: "Playfair Display", serif;                              /* Definisce il font principale usato per titoli e intestazioni */
+  --font-body: "Source Sans 3", system-ui, -apple-system, sans-serif;     /* Imposta il font del testo generale del sito */
+  --color-bg: #f5f2ec;                                                  /* Colore di sfondo principale della pagina */
+  --color-bg-light: #ffffff;                                            /* Colore di sfondo chiaro usato per sezioni o aree in evidenza */
+  --color-primary: #4a164b;                                             /* Colore principale del progetto, usato per titoli, pulsanti ed elementi distintivi */
+  --color-secondary: #c38c5a;                                           /* Colore secondario di accento, usato per i dettagli grafici e richiami visivi */
+  --color-text: #2a1f2e;                                                /* Colore principale del testo */
+  --color-muted: #6b5e5a;                                               /* Colore dei testi secondari o meno evidenti */
+  --color-border: #e0d4c7;                                              /* Colore dei bordi di card, box e altri contenitori */
+  --color-bg-card: #fdf9f2;                                             /* Sfondo dedicato alle card dei report */
+  --color-bg-highlight: #faf5ec;                                        /* Sfondo dei riquadri evidenziati */
+  --color-sdg-bg: #f2e8f5;                                              /* Sfondo associato agli elementi della sezione SDG */
+  --color-metric-bg: #f8f2f7;                                           /* Sfondo dei pannelli con metriche e dati numerici */
+  --color-timeline-bg: #fdf7f0;                                         /* Sfondo dei contenuti inseriti nella timeline */
 }
-*, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { margin:0; font-family:var(--font-body); font-size:1rem; color:var(--color-text); background:var(--color-bg); line-height:1.7; }
+*, *::before, *::after { box-sizing: border-box; }                        /* Fa sì che larghezza e altezza includano anche padding e bordo, semplificando il controllo del layout */
+html { scroll-behavior: smooth; }                                         /* Rende fluido lo scorrimento della pagina, ad esempio quando si clicca su un link di navigazione interna */
+body { margin:0; font-family:var(--font-body); font-size:1rem; color:var(--color-text); background:var(--color-bg); line-height:1.7; }    /* Imposta l’aspetto generale del body, definendo margini, tipografia, colore del testo, sfondo e interlinea di base */
 
-/* HERO */
+/* HERO------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */
+/* Imposta la sezione hero con contenuto centrato, altezza minima, testo bianco e uno sfondo composto da immagine e sfumatura sovrapposta */
 .hero { position:relative; min-height:50vh; padding:60px 20px; display:flex; align-items:center; justify-content:center; text-align:center; color:#ffffff; background: linear-gradient(135deg, rgba(74,22,75,0.88), rgba(195,140,90,0.65)), url("img/hero.jpg") center / cover no-repeat; }
+/* Crea un overlay che copre completamente la sezione hero e si colloca sopra lo sfondo */
 .hero__overlay { position:absolute; inset:0; z-index:1; }
+/* Posiziona il contenuto della hero sopra l’overlay e ne limita la larghezza per una migliore leggibilità */
 .hero__content { position:relative; max-width:800px; z-index:2; }
+/* Imposta il titolo della hero con font dedicato, dimensione adattiva e spaziatura inferiore */
 .hero h1 { font-family:var(--font-heading); font-size:clamp(2.2rem,4vw,3.2rem); margin:0 0 0.6rem; }
+/* Imposta il testo descrittivo della hero con larghezza limitata, centratura e leggera trasparenza */
 .hero p { font-size:1.1rem; max-width:600px; margin:0 auto; opacity:0.92; }
 
-/* NAV */
+/* NAV -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* Imposta una barra di navigazione sticky in alto, con sfondo chiaro, bordo inferiore e ombra leggera */
 .top-nav { position:sticky; top:0; z-index:100; background:var(--color-bg-light); border-bottom:2px solid var(--color-primary); box-shadow:0 2px 8px rgba(74,22,75,0.08); }
+/* Organizza l’elenco della navigazione con Flexbox, centrando i link e permettendo il ritorno a capo */
 .top-nav ul { list-style:none; margin:0; padding:0.65rem 1.2rem; display:flex; flex-wrap:wrap; justify-content:center; gap:0.6rem 1.6rem; }
+/* Rimuove il margine predefinito dagli elementi del menu */
 .top-nav li { margin:0; }
+/* Imposta lo stile dei link del menu, con testo in maiuscolo, bordo inferiore trasparente e transizione fluida per l’effetto hover */
 .top-nav a { text-decoration:none; color:var(--color-muted); font-size:0.82rem; font-weight:600; letter-spacing:0.09em; text-transform:uppercase; padding-bottom:3px; border-bottom:2px solid transparent; transition:color 0.2s,border-color 0.2s; }
+/* Evidenzia il link del menu al passaggio del mouse cambiando colore del testo e del bordo inferiore */
 .top-nav a:hover { color:var(--color-primary); border-bottom-color:var(--color-secondary); }
 
-/* SEZIONI */
+/* SEZIONI ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* Aggiunge spazio in basso al contenuto principale della pagina */
 main { padding:0 0 3rem; }
+/* Il selettore .section assegna una spaziatura interna uniforme alle varie sezioni della pagina, con un padding verticale più ampio e un padding orizzontale contenuto, utile a mantenere equilibrio visivo e corretta distribuzione dei contenuti */
 .section { padding:3rem 1.2rem; }
+/* Applica uno sfondo chiaro alle sezioni che devono distinguersi visivamente dal colore di fondo principale della pagina */
 .section--light { background:var(--color-bg-light); }
+/* Definisce il contenitore interno della sezione, limitandone la larghezza massima e centrandolo orizzontalmente per mantenere il layout ordinato e leggibile */
 .section__inner { max-width:1080px; margin:0 auto; }
+/* Definisce l’etichetta introduttiva della sezione, visualizzata come testo piccolo in maiuscolo, con spaziatura accentuata tra le lettere e colore secondario per evidenziare l’intestazione della sezione */
 .section__eyebrow { display:inline-block; text-transform:uppercase; letter-spacing:0.14em; font-size:0.72rem; font-weight:600; color:var(--color-secondary); margin-bottom:0.4rem; }
+/* Definisce lo stile dei titoli di secondo livello nelle sezioni, applicando il font dei titoli, una dimensione responsiva, il colore principale del sito e una spaziatura adeguata rispetto agli elementi circostanti */
 .section h2 { font-family:var(--font-heading); font-size:clamp(1.6rem,3vw,2.2rem); margin:0.15rem 0 1rem; color:var(--color-primary); line-height:1.25; }
+/* Definisce lo stile base dei paragrafi nelle sezioni, aggiungendo uno spazio inferiore tra i blocchi di testo e limitando la larghezza delle righe per migliorare la leggibilità */
 .section p { margin:0 0 0.9rem; max-width:72ch; }
 
-/* GRID */
+/* GRID -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* Definisce il contenitore a griglia della sezione, organizzando gli elementi interni con layout CSS Grid e impostando una distanza uniforme tra i blocchi */
 .section__grid { display:grid; gap:2rem; }
+/* Applica una regola responsive per gli schermi più ampi, trasformando la griglia della sezione in due colonne con proporzioni diverse e allineando gli elementi all’inizio del contenitore */
 @media (min-width:800px) { .section__grid { grid-template-columns:3fr 2fr; align-items:flex-start; } }
 
-/* SFONDI SEZIONI */
+/* SFONDI SEZIONI ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* Definisce lo sfondo della sezione “pratiche”, combinando un’immagine posizionata sul lato destro con una sfumatura sovrapposta che migliora il contrasto visivo e la leggibilità del contenuto testuale */
 #pratiche { background: linear-gradient(to right, rgba(245,242,236,0.97) 55%, rgba(245,242,236,0.5)), url("img/vigneto.jpg") right center / cover no-repeat; }
+/* Definisce lo sfondo della sezione “energia”, combinando un’immagine posizionata sul lato sinistro con una sfumatura sovrapposta che migliora il contrasto visivo e la leggibilità del contenuto testuale */
 #energia { background: linear-gradient(to left, rgba(255,255,255,0.96) 55%, rgba(255,255,255,0.5)),  url("img/energia.jpg") left center / cover no-repeat; }
+/* Definisce lo sfondo della sezione “acqua”, combinando un’immagine posizionata sul lato destro con una sfumatura sovrapposta che migliora il contrasto visivo e la leggibilità del contenuto testuale */
 #acqua {  background: linear-gradient(to right, rgba(255,255,255,0.96) 55%, rgba(255,255,255,0.5)),  url("img/acqua.jpg") right center / cover no-repeat;} 
+/* Definisce lo sfondo della sezione “circolare”, combinando un’immagine posizionata sul lato sinistro con una sfumatura sovrapposta che migliora il contrasto visivo e la leggibilità del contenuto testuale */
 #circolare {background: linear-gradient(to left, rgba(255,255,255,0.96) 55%, rgba(255,255,255,0.5)), url("img/circolare.jpg") left center / cover no-repeat;}
+/* Definisce lo sfondo della sezione “persone”, combinando un’immagine posizionata sul lato destro con una sfumatura trasparente sovrapposta, utile a creare profondità visiva e a mantenere leggibile il contenuto testuale nella parte sinistra */
 #persone { background:  linear-gradient(to right, rgba(255,255,255,0.97) 55%, rgba(255,255,255,0)),  url("img/persone.jpg") right center / cover no-repeat;}
-/* SDG GRID */
+
+/* SDG GRID ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* Definisce la griglia degli elementi SDG, disponendo automaticamente le card in colonne flessibili e mantenendo una spaziatura uniforme tra i vari elementi */
 .sdg-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:1rem; margin-top:1.4rem; }
+/* Definisce l’aspetto base delle card SDG, applicando angoli arrotondati, nascondendo gli elementi che eccedono il contenitore e impostando transizioni fluide per gli effetti interattivi */
 .sdg-card { border-radius:10px; overflow:hidden; transition:transform 0.2s,box-shadow 0.2s; line-height:0; }
+/* Definisce lo stile dell’immagine interna alla card SDG, facendole occupare tutta la larghezza disponibile, mantenendo le proporzioni originali e adattandola correttamente al contenitore */
 .sdg-card img { width:100%; height:auto; display:block; border-radius:10px; }
+/* Definisce lo stile del testo descrittivo associato alla card SDG, visualizzandolo come blocco separato e impostando dimensione, colore e spaziatura adatti alla leggibilità */
 .sdg-card span { display:block; margin-top:0.4rem; font-weight:400; font-size:0.82rem; color:var(--color-text); line-height:1.4; }
+/* Definisce l’effetto hover della card SDG, sollevandola leggermente e applicando un’ombra per evidenziare l’interattività dell’elemento */
 .sdg-card:hover { transform:translateY(-3px); box-shadow:0 6px 16px rgba(74,22,75,0.18); }
 
-/* HIGHLIGHT BOX */
+/* HIGHLIGHT BOX ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* Definisce il riquadro evidenziato, assegnandogli uno sfondo dedicato, un bordo sottile, un accento laterale sinistro più marcato, angoli arrotondati e una spaziatura interna utile a mettere in risalto il contenuto */
 .highlight-box { background:var(--color-bg-highlight); border:1px solid var(--color-border); border-left:4px solid var(--color-secondary); border-radius:10px; padding:1.4rem 1.2rem; }
+/* Definisce lo stile del titolo interno al riquadro evidenziato, applicando il font dei titoli, il colore principale del sito e un margine inferiore per separarlo dal contenuto successivo */
 .highlight-box h3 { margin:0 0 0.8rem; font-family:var(--font-heading); font-size:1.1rem; color:var(--color-primary); }
+/* Definisce lo stile della lista interna al riquadro evidenziato, eliminando il margine esterno e mantenendo un rientro a sinistra per l’allineamento corretto dei punti elenco */
 .highlight-box ul { margin:0; padding-left:1.1rem; }
+/* Definisce lo stile degli elementi della lista nel riquadro evidenziato, aggiungendo spazio tra le voci e impostando una dimensione del testo leggermente ridotta ma ancora ben leggibile */
 .highlight-box li { margin-bottom:0.45rem; font-size:0.95rem; }
 
-/* METRICHE */
+/* METRICHE ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* Definisce il contenitore delle metriche come una griglia responsive, distribuendo automaticamente i pannelli in colonne flessibili e mantenendo una spaziatura uniforme tra gli elementi */
 .metric-panel { display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); }
+/* Definisce l’aspetto del singolo pannello metrico, assegnandogli uno sfondo dedicato, un bordo sottile, angoli arrotondati e uno spazio interno che migliora la leggibilità del contenuto */
 .metric { background:var(--color-metric-bg); border:1px solid var(--color-border); border-radius:12px; padding:1rem 1.1rem; }
+/* Definisce l’etichetta descrittiva del pannello metrico, utilizzando un testo piccolo, in maiuscolo e con spaziatura aumentata tra le lettere per distinguerlo dal valore numerico principale */
 .metric__label { font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--color-muted); }
+/* Definisce il valore numerico principale del pannello metrico, rendendolo più evidente attraverso dimensione maggiore, peso marcato, font dedicato ai titoli e colore principale del sito */
 .metric__value { display:block; margin-top:0.35rem; font-size:1.6rem; font-weight:700; color:var(--color-primary); font-family:var(--font-heading); }
 
-/* TIMELINE */
+/* TIMELINE ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* Definisce la struttura principale della timeline, aggiungendo spazio superiore, un rientro interno a sinistra e una linea verticale che funge da asse visivo degli eventi */
 .timeline { margin-top:1.8rem; padding-left:2rem; border-left:3px solid var(--color-border); }
+/* Definisce il singolo elemento della timeline, posizionandolo come riferimento per eventuali elementi assoluti e aggiungendo spazio inferiore tra un evento e il successivo */
 .timeline__item { position:relative; margin-bottom:2rem; }
+/* Crea il marcatore circolare della timeline (pallino) tramite pseudo-elemento, posizionandolo lungo l’asse verticale e distinguendolo con colore secondario, bordo chiaro e alone esterno */
 .timeline__item::before { content:""; position:absolute; left:-2.45rem; top:0.35rem; width:12px; height:12px; background:var(--color-secondary); border-radius:50%; border:2px solid var(--color-bg-light); box-shadow:0 0 0 2px var(--color-secondary); }
+/* Definisce lo stile dell’anno nella timeline, evidenziandolo come etichetta separata con testo marcato, colore secondario e leggera spaziatura tra le lettere */
 .timeline__year { display:inline-block; margin-bottom:0.4rem; font-weight:700; font-size:0.95rem; color:var(--color-secondary); letter-spacing:0.05em; }
+/* Definisce il contenitore del contenuto nella timeline, assegnandogli uno sfondo dedicato, un bordo sottile, angoli arrotondati e uno spazio interno che migliora leggibilità e ordine visivo */
 .timeline__content { background:var(--color-timeline-bg); border:1px solid var(--color-border); border-radius:10px; padding:1rem 1.1rem; }
+/* Definisce lo stile del titolo interno al contenuto della timeline, applicando il colore principale del sito e un margine inferiore per separarlo dal testo descrittivo */
 .timeline__content h3 { margin:0 0 0.4rem; font-size:1rem; color:var(--color-primary); }
+/* Definisce lo stile dei paragrafi nel contenuto della timeline, mantenendo il testo compatto, leggibile e adattabile alla larghezza disponibile */
 .timeline__content p { margin:0; font-size:0.95rem; color:var(--color-muted); max-width:100%; }
 
-/* REPORT CARDS */
+/* REPORT CARDS -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* Definisce la lista dei report come una griglia verticale, con spaziatura uniforme tra gli elementi e distacco superiore dalla sezione precedente */
 .report-list { display:grid; gap:1.4rem; margin-top:1.6rem; }
+/* Applica una regola responsive: da 700px in su, la lista dei report passa da una singola colonna a due colonne uguali per sfruttare meglio lo spazio orizzontale */
 @media (min-width:700px) { .report-list { grid-template-columns:repeat(2,1fr); } }
+/* Definisce la card del report come un contenitore flessibile verticale, con sfondo dedicato, bordo leggero, angoli arrotondati e transizioni morbide per gli effetti interattivi */
 .report-card { background:var(--color-bg-card); border:1px solid var(--color-border); border-radius:14px; overflow:hidden; display:flex; flex-direction:column; transition:transform 0.2s,box-shadow 0.2s; }
+/* Definisce l’effetto hover della card del report, sollevandola leggermente e aggiungendo un’ombra più marcata per rafforzare la percezione di interattività */
 .report-card:hover { transform:translateY(-4px); box-shadow:0 10px 28px rgba(74,22,75,0.14); }
+/* Assegna alla copertina della prima report card uno sfondo composto da immagine e sovrapposizione scura, così da migliorare resa visiva e leggibilità del contenuto sovrapposto */
 .report-card:nth-child(1) .report-card__cover { background: linear-gradient(rgba(74,22,75,0.6),rgba(74,22,75,0.6)), url("img/cover-2024.jpg") center / cover no-repeat; }
+/* Assegna alla copertina della seconda report card un’immagine di sfondo dedicata al report 2023, con overlay scuro per mantenere coerenza grafica e buona leggibilità */
 .report-card:nth-child(2) .report-card__cover { background: linear-gradient(rgba(74,22,75,0.6),rgba(74,22,75,0.6)), url("img/cover-2023.jpg") center / cover no-repeat; }
+/* Definisce l’area di copertina della report card, fissandone l’altezza e centrando il contenuto su uno sfondo sfumato di fallback */
 .report-card__cover { height:120px; background:linear-gradient(135deg,var(--color-primary),#7a2a7b); display:flex; align-items:center; justify-content:center; }
+/* Definisce l’intestazione della report card come fascia superiore con sfondo sfumato, spazi interni ampi e layout flex per distribuire ordinatamente gli elementi orizzontalmente */
 .report-card__header { background:linear-gradient(135deg,var(--color-primary),#7a2a7b); padding:1.2rem 1.2rem 1rem; display:flex; align-items:flex-start; justify-content:space-between; gap:0.8rem; }
+/* Definisce l’anno del report come elemento tipografico principale della card, evidenziandolo con font del titolo, grande dimensione e colore quasi bianco */
 .report-card__year { font-family:var(--font-heading); font-size:2.2rem; font-weight:700; color:rgba(255,255,255,0.95); line-height:1; }
+/* Definisce il badge della report card come etichetta compatta e ben leggibile, testo maiuscolo e fondo semi-trasparente su base scura */
 .report-card__badge { background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); color:#ffffff; font-size:0.7rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; padding:0.25rem 0.6rem; border-radius:999px; white-space:nowrap; }
+/* Definisce il riquadro dell’icona nella report card, mantenendolo compatto, rigido nelle dimensioni e visivamente separato tramite angoli arrotondati, sfondo leggero e ombra */
 .report-card__icon { width:52px; height:64px; border-radius:4px; overflow:hidden; flex-shrink:0; box-shadow:0 2px 8px rgba(0,0,0,0.3); background:rgba(255,255,255,0.15); }
+/* Adatta l’immagine interna all’icona della report card, facendola riempire completamente il contenitore e mantenendo il focus sulla parte superiore  */
 .report-card__icon img { width:100%; height:100%; object-fit:cover; object-position:top; display:block; }
+/* Definisce il corpo della report card come area interna flessibile, con padding uniforme e disposizione verticale degli elementi contenuti */
 .report-card__body { padding:1.2rem 1.2rem 1.4rem; flex:1; display:flex; flex-direction:column; }
+/* Inserisce una sottile linea decorativa all’inizio del corpo della report card, utile a separare visivamente l’intestazione dal contenuto testuale */
 .report-card__body::before { content:""; display:block; height:2px; background:linear-gradient(to right,var(--color-secondary),transparent); margin-bottom:0.9rem; border-radius:999px; }
+/* Definisce il titolo del contenuto della report card, evidenziandolo con font heading, colore principale e una spaziatura inferiore che lo separa dal testo descrittivo */
 .report-card__body h3 { margin:0 0 0.5rem; font-size:1rem; color:var(--color-primary); font-family:var(--font-heading); line-height:1.3; }
+/* Definisce il paragrafo descrittivo della report card con tono visivo secondario, spaziatura inferiore e comportamento flessibile per occupare lo spazio disponibile */
 .report-card__body p { margin:0 0 0.5rem; font-size:0.92rem; color:var(--color-muted); flex:1; max-width:100%; }
+/* Definisce il pulsante all’interno della report card, allineandolo a sinistra e disponendo eventuali icone e testo su una sola riga flessibile */
 .report-card .btn { align-self:flex-start; margin-top:0.6rem; display:inline-flex; align-items:center; gap:0.4rem; }
+/* Aggiunge un’icona testuale prima del pulsante della report card, simulando visivamente un’azione di download */
 .report-card .btn::before { content:"↓"; font-size:1rem; line-height:1; }
 
-/* PULSANTI */
+/* PULSANTI ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* Definisce lo stile base dei pulsanti come elementi compatti e prominenti, con forma pill, testo maiuscolo e transizioni morbide per l’interazione */
 .btn { display:inline-block; margin-top:0.9rem; padding:0.6rem 1.3rem; border-radius:999px; background:var(--color-primary); color:#ffffff; text-decoration:none; font-size:0.85rem; font-weight:600; letter-spacing:0.07em; text-transform:uppercase; transition:background 0.25s,transform 0.15s; }
+/* Definisce lo stato hover del pulsante, scurendo leggermente lo sfondo e sollevandolo di un pixel per dare un feedback visivo immediato */
 .btn:hover { background:#3a1241; transform:translateY(-1px); }
 
-/* FOOTER */
+/* FOOTER -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* Definisce il footer come fascia con sfondo nel colore principale, testo centrato e tono visivo attenuato rispetto al contenuto principale  */
 .site-footer { background:var(--color-primary); color:rgba(255,255,255,0.75); text-align:center; padding:1.8rem 1rem 2rem; font-size:0.85rem; margin-top:2rem; }
 
-/* RESPONSIVE */
+/* RESPONSIVE ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* Apre una media query che applica regole responsive solo quando la larghezza della viewport è pari o inferiore a 600px, quindi tipicamente su smartphone */
 @media (max-width:600px) {
+ /* Riduce il padding delle sezioni su schermi piccoli, così da rendere il layout più compatto e adatto alla visualizzazione mobile */ 
   .section { padding:2rem 1rem; }
+  /* Riduce l’altezza minima e il padding dell’hero sui dispositivi piccoli, così da renderlo più proporzionato e meno ingombrante su mobile */
   .hero { min-height:40vh; padding:40px 16px; }
+  /* Riduce lo spazio tra le voci della navigazione su schermi piccoli, migliorando la distribuzione del menu quando gli elementi vanno a capo */
   .top-nav ul { gap:0.5rem 1rem; }
+  /* Riduce il rientro sinistro della timeline su mobile, così da recuperare spazio orizzontale per il contenuto */
   .timeline { padding-left:1.5rem; }
+  /* Riposiziona il marcatore della timeline più vicino al contenuto su schermi piccoli, così da mantenere proporzioni corrette nel layout mobile */
   .timeline__item::before { left:-2rem; }
+  /* Disattiva l’immagine di sfondo nelle sezioni “pratiche” ed “energia” su schermi piccoli, semplificando il layout e migliorando la leggibilità del contenuto */
   #pratiche, #energia { background-image:none; }
 }
 
-/* LOGHI */
-.cert-logos {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  align-items: center;
-  margin-top: 2rem;
+/* LOGHI -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+.cert-logos {               /* Seleziona il contenitore che raccoglie i loghi delle certificazioni, su cui verranno applicate le regole di layout e spaziatura */
+  display: flex;            /* Imposta il contenitore come layout flex, permettendo di disporre i loghi o gli elementi interni su una stessa riga in modo flessibile */
+  flex-wrap: wrap;          /* Permette agli elementi figli del contenitore flex di andare a capo su più righe quando lo spazio orizzontale non è sufficiente */
+  gap: 2rem;                /* Imposta una distanza uniforme di 2rem tra gli elementi, aggiungendo spazio tra gli elementi del contenitore */ 
+  align-items: center;      /* Centra verticalmente gli elementi nel contenitore flex */
+  margin-top: 2rem;         /* Aggiunge uno spazio superiore di 2rem rispetto all’elemento precedente, separando visivamente meglio il blocco dal contenuto sopra */
 }
 
-.cert-logos img {
-  height: 200px;
-  width: auto;
-  object-fit: contain;
-  filter: grayscale(20%);
-  transition: filter 0.3s;
+.cert-logos img {           /* Seleziona tutte le immagini contenute nel blocco dei loghi delle certificazioni, per applicare loro regole dimensionali e visive specifiche */
+  height: 200px;            /* Imposta un’altezza fissa di 200px per le immagini dei loghi, così da uniformarne la presenza visiva indipendentemente dalle proporzioni originali */
+  width: auto;              /* Lascia che la larghezza dell’immagine si adatti automaticamente in proporzione all’altezza fissata, preservando il rapporto originale del logo */
+  object-fit: contain;      /* Fa sì che l’immagine si ridimensioni interamente dentro l’area disponibile senza essere tagliata o deformata */
+  filter: grayscale(20%);   /* Applica una leggera scala di grigi alle immagini dei loghi */
+  transition: filter 0.3s;  /* Rende graduale il cambiamento del filtro dell’immagine in 0,3 secondi, creando un effetto visivo più morbido nelle interazioni */
 }
 
-.cert-logos img:hover {
-  filter: grayscale(0%);
+.cert-logos img:hover {     /* Seleziona lo stato hover delle immagini dei loghi, permettendo di modificare il loro aspetto quando l’utente ci passa sopra con il puntatore */
+  filter: grayscale(0%);    /* Rimuove completamente la scala di grigi al passaggio del mouse, riportando il logo ai suoi colori originali */
 }
